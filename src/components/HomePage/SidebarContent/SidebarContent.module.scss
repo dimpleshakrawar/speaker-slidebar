@@ -1,0 +1,50 @@
+
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    gap:5px;
+    padding: 0.8rem 1.2rem;
+    background-color: var( --disable-textColor);
+    font-family: monospace;
+    padding: 1rem;
+}
+
+.sidebarBody {
+    padding: 1rem;
+}
+
+.searchContainer {
+    position: relative;
+    // border: 1px solid var(--disable-textColor);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    // image {
+    //     position: absolute;
+    //     bottom: 0;
+    //     right: 0;
+    // }
+    
+}
+
+.searchImage {
+    position: absolute;
+    top: 32%;
+}
+
+.speakerInfoContainer {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 1.2rem;
+    border: 0.1rem solid var(--disable-textColor);
+    width: 100%;
+}
+
+
+.speakerInfo {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    padding: 1.2rem;
+    width: 100%;
+}   
