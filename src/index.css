@@ -15,6 +15,10 @@
   --light-textColor: white;
   --disable-textColor: #f6f8f8;
   --grey-textColor: #717693;
+  --button-disableColor: #E9E9E9;
+  --button-brandLightColor: #FCF3EF;
+
+  --highlighted-color: #4CBB3E
 
   /* --light-textColor: "" */
 }
