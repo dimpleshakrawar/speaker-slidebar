@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
-import { Box, IconButton, Typography } from "@mui/material"
-// import "./SidebarContent.module.scss"
+import { useMediaQuery, Box, IconButton, Typography } from "@mui/material"
 import IconInput from "../../common/IconInput"
 import CloseIcon from '@mui/icons-material/Close';
-// import SearchIcon from '@mui/icons-material/Search';
-// import { Icons } from "../../../icons/Icons"
 import searchImg from "../../../assets/search.png"
-
 import SpeakerDetails from "../../../SpeakerDetails.json"
 import StyledButton from "../../common/StyledButton";
 import Loader from "../../common/Loader/Loader";
@@ -15,11 +11,12 @@ import { TDetails } from "../SpeakerCard";
 import styles from './SidebarContent.module.scss';
 import "../../muiStyles.css"
 
-// type TProps = {
-//     toggleDrawer:() => void;
-// }
+type TProps = {
+  toggleDrawer: () => void
+}
 
-const SidebarContent = () => {
+const SidebarContent = ({toggleDrawer}: TProps) => {
+  const isSmallScreen = useMediaQuery('(max-width:600px)');
     const [data, setData] = useState(SpeakerDetails);
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false)
@@ -54,32 +51,31 @@ const SidebarContent = () => {
                 );
                 setData(filteredData);
               } else {
-                // Reset to the original data if no query
+               
                 setData(SpeakerDetails);
               }
             } finally {
-              setLoading(false); // Ensure loading is set to false even if there's an error
+              setLoading(false);
             }
           };
-      
           searchTable(query);
         }, 1000);
       
         return () => {
           clearTimeout(debounce);
-          setLoading(false); // Ensure loading is set to false when the effect is cleaned up
+          setLoading(false); 
         };
       }, [query]);
       
     return (
-        <Box sx={{width: 600}}>
+        <Box sx={{width: isSmallScreen ? '100%' : 600}}>
             <div>
                 {/* header */}
                 <div className={styles.topHeader}>
                     <div className={styles.headerContainer}>
                         <Typography variant="subtitle1" gutterBottom sx={{fontWeight:"600"}}>Add Speaker</Typography>
                         <IconButton aria-label="delete"
-                        //  onClick={toggleDrawer}
+                         onClick={toggleDrawer}
                         >
                             <CloseIcon fontSize="small"
                             />
