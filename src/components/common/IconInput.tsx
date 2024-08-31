@@ -13,7 +13,7 @@ const IconInput = ({Icon , position, onChange}: TIconInputProps) => {
     return (
         <div style={{width:" 100%"}}>
              <OutlinedInput
-                sx={{width:"100%"}}
+                sx={{width:"100%", paddingLeft:"1.5rem"}}
                 id="input-with-icon-textfield"
                 // slotProps={{
                 //     input: {
