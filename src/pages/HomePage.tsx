@@ -7,14 +7,14 @@ import SidebarContent from "../components/HomePage/SidebarContent/SidebarContent
 const HomePage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
+    const toggleDrawer = () => {
+    //   if (
+    //     event.type === 'keydown' &&
+    //     ((event as React.KeyboardEvent).key === 'Tab' ||
+    //       (event as React.KeyboardEvent).key === 'Shift')
+    //   ) {
+    //     return;
+    //   }
 
       setIsModalOpen(prev => !prev)
     };

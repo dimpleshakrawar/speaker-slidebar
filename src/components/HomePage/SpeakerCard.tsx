@@ -12,14 +12,14 @@ export type TDetails = {
 
 type TSpeakerProps = {
     details: TDetails;
-    handleChange: (id: number) => void;
+    handleChange: ( id: number) => void;
     selectedData: TDetails[];
 }
 
 
 const SpeakerCard = ({details, handleChange, selectedData} :TSpeakerProps) => {
     return (
-        <div className={styles.speakerInfoContainer} style={{border: selectedData?.some((info) => info?.id === details?.id ) ? "2px solid  var(--highlighted-color)" : "2px solid var(--disable-textColor)"}} key={details.id}>
+        <div onClick={() => handleChange(details?.id)} className={styles.speakerInfoContainer} style={{border: selectedData?.some((info) => info?.id === details?.id ) ? "2px solid  var(--highlighted-color)" : "2px solid var(--disable-textColor)"}} key={details.id}>
             <div className={styles.speakerInfo}>
                 <div className={styles.avatarImg}>
                     <img src={avatar} alt="Avatar" />
@@ -38,16 +38,16 @@ const SpeakerCard = ({details, handleChange, selectedData} :TSpeakerProps) => {
                 </div>
             </div>
 
-        <div>
-            <Checkbox
-                size="small"
-                checked={selectedData?.some((data) => data.id === details?.id)}
-                onChange={() => handleChange(details?.id)}
-                inputProps={{ 'aria-label': 'controlled' }}
-                sx={{zIndex: "-7", color:"var(--highlighted-color)"}}
-                // color="success"
-            />
-        </div>
+            <div>
+                <Checkbox
+                    size="small"
+                    checked={selectedData?.some((data) => data.id === details?.id)}
+                    // onChange={(e) => handleChange(details?.id)}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    sx={{zIndex: "-7", color:"var(--highlighted-color)", '&.Mui-checked': {color:"var(--highlighted-color)"},}}
+                    // color="success"
+                />
+            </div>
     </div>
     )
 }

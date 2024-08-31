@@ -15,14 +15,17 @@ import { TDetails } from "../SpeakerCard";
 import styles from './SidebarContent.module.scss';
 import "../../muiStyles.css"
 
+// type TProps = {
+//     toggleDrawer:() => void;
+// }
+
 const SidebarContent = () => {
     const [data, setData] = useState(SpeakerDetails);
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false)
     const [selectedData, setSelectedData] = useState<TDetails[]>([])
 
-    const handleChange = (id: number) => {
-        console.log(id,"id")
+    const handleChange = ( id: number) => {
         const findData = data?.find(item => item.id === id);
       
         if (findData) {
@@ -39,7 +42,6 @@ const SidebarContent = () => {
       };
       
 
-    console.log(selectedData,"sele")
     useEffect(() => {
         setLoading(true); // Set loading to true immediately when the effect is triggered
       
@@ -76,8 +78,11 @@ const SidebarContent = () => {
                 <div className={styles.topHeader}>
                     <div className={styles.headerContainer}>
                         <Typography variant="subtitle1" gutterBottom sx={{fontWeight:"600"}}>Add Speaker</Typography>
-                        <IconButton aria-label="delete">
-                            <CloseIcon fontSize="small"/>
+                        <IconButton aria-label="delete"
+                        //  onClick={toggleDrawer}
+                        >
+                            <CloseIcon fontSize="small"
+                            />
                         </IconButton>
                     </div>
 
@@ -101,7 +106,7 @@ const SidebarContent = () => {
                 {/* footer */}
                 <div className={styles.footer}>
                     <div style={{display:"flex", flexDirection:"row", gap:"0.5rem"}}>
-                        <StyledButton backgroundColor="var(--button-disableColor)" hoverBackgroundColor="var(--brand-color)" hoverTextColor="var(--light-textColor)" textColor="var(--grey-textColor)" size="medium">Add</StyledButton>
+                        <StyledButton backgroundColor={selectedData.length ? "var(--brand-color)" : "var(--button-disableColor)"} hoverBackgroundColor="var(--brand-color)" textColor={selectedData?.length ? "var(--light-textColor)" : "var(--brand-color)"} hoverTextColor="var(--grey-textColor)" size="medium" activeBackgroundColor= "var(--brand-color)" activeTextColor="var(--light-textColor)">Add</StyledButton>
                         <StyledButton backgroundColor="var(--button-brandLightColor)" hoverBackgroundColor="" hoverTextColor="var(--brand-color)" textColor="var(--brand-color)" size="medium">Cancel</StyledButton>
                    </div>
                         <StyledButton backgroundColor="" hoverBackgroundColor="" hoverTextColor="" textColor="var(--brand-color)">Create a Speaker</StyledButton>
