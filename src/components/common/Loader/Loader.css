@@ -1,0 +1,19 @@
+.loader {
+    height: 1.5rem; /* equivalent to h-6 in Tailwind */
+    width: 1.5rem;  /* equivalent to w-6 in Tailwind */
+    border-radius: 50%; /* equivalent to rounded-full in Tailwind */
+    border: 4px solid; /* equivalent to border-4 in Tailwind */
+    border-color: var(--brand-color) var(--brand-color) var(--brand-color) transparent; /* equivalent to border-solid and border-t-transparent */
+    animation: spin 1s linear infinite; /* equivalent to animate-spin in Tailwind */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

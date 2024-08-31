@@ -1,11 +1,21 @@
 
 .css-5vjzfg-MuiInputBase-root-MuiOutlinedInput-root .css-lc42l8-MuiInputBase-input-MuiOutlinedInput-input {
     height: 0.5rem;
-    border-radius: 5px;
+    /* border-radius: 10px;
+    border: 0.1rem solid var(--disable-textColor); */
 }
 
 .css-1y5vrnu-MuiButtonBase-root-MuiCheckbox-root.Mui-checked .css-1y5vrnu-MuiButtonBase-root-MuiCheckbox-root 
 .MuiCheckbox-indeterminate 
 .css-1y5vrnu-MuiButtonBase-root-MuiCheckbox-root {
     padding: 0px;
+}
+
+.css-5vjzfg-MuiInputBase-root-MuiOutlinedInput-root {
+    border-radius: 10px;
+    border: 0.1rem solid var(--disable-textColor);
+}
+
+.css-eydqou-MuiPaper-root-MuiDrawer-paper  {
+    border-radius: 1.5rem;
 }

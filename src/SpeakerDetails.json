@@ -1,0 +1,74 @@
+[
+    {
+        "id":1,
+        "name":"Kavya Das",
+        "position":"Manager",
+        "organisation":"Kavya Pvt Ltd"
+    },
+    {
+        "id":2,
+        "name":"Sanjay Singhania",
+        "position":"CEO",
+        "organisation":"Aircel Pvt Ltd"
+    },
+    {
+        "id":3,
+        "name":"Hritik Singh",
+        "position":"Actor",
+        "organisation":"Balaji Films"
+    },
+    {
+        "id":4,
+        "name":"Mamta Das",
+        "position":"Politician",
+        "organisation":"TMC"
+    },
+    {
+        "id":5,
+        "name":"Aishwarya Rai",
+        "position":"Actor",
+        "organisation":"Balaji Films"
+    },
+    {
+        "id":6,
+        "name":"Tony Stark",
+        "position":"Scientist",
+        "organisation":"Avengers org"
+    },
+    {
+        "id":7,
+        "name":"Charles Babbage",
+        "position":"Technician",
+        "organisation":"Computer Ltd"
+    },
+    {
+        "id":8,
+        "name":"Anita Ambani",
+        "position":"Business Women",
+        "organisation":"Reliance Comp"
+    },
+    {
+        "id":9,
+        "name":"Rajkumar Rao",
+        "position":"Actor",
+        "organisation":"Balaji Films"
+    },
+    {
+        "id":10,
+        "name":"Sizuka Chan",
+        "position":"Manager",
+        "organisation":"Samsung"
+    },
+    {
+        "id":11,
+        "name":"Kiteratsu Kumar",
+        "position":"Scientist",
+        "organisation":"ISRO"
+    },
+    {
+        "id":12,
+        "name":"Kazama Moto",
+        "position":"Teacher",
+        "organisation":"DPS"
+    }
+]

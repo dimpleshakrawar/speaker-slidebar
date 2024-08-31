@@ -6,13 +6,14 @@ type TPosition = InputAdornmentOwnProps["position"]
 type TIconInputProps = {
     Icon?: OverridableComponent<SvgIconTypeMap<object, "svg">> & { muiName: string; };
     position: TPosition;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const IconInput = ({Icon , position}: TIconInputProps) => {
+const IconInput = ({Icon , position, onChange}: TIconInputProps) => {
     return (
         <div style={{width:" 100%"}}>
              <OutlinedInput
-             sx={{width:"100%"}}
+                sx={{width:"100%"}}
                 id="input-with-icon-textfield"
                 // slotProps={{
                 //     input: {
@@ -26,6 +27,7 @@ const IconInput = ({Icon , position}: TIconInputProps) => {
                 // }}
                 endAdornment={<InputAdornment position={position}> {Icon && <Icon />}</InputAdornment>}
                 // variant="standard"
+                onChange={onChange}
             />
         </div>
     )

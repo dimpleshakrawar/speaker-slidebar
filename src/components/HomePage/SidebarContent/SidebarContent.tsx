@@ -1,22 +1,79 @@
-import { Box, Checkbox, Divider, IconButton, Typography } from "@mui/material"
+import { useEffect, useState } from "react";
+import { Box, IconButton, Typography } from "@mui/material"
 // import "./SidebarContent.module.scss"
 import IconInput from "../../common/IconInput"
 import CloseIcon from '@mui/icons-material/Close';
 // import SearchIcon from '@mui/icons-material/Search';
 // import { Icons } from "../../../icons/Icons"
 import searchImg from "../../../assets/search.png"
-import editImg from "../../../assets/edit.png"
-import avatar from "../../../assets/Avatar.png"
+
+import SpeakerDetails from "../../../SpeakerDetails.json"
+import StyledButton from "../../common/StyledButton";
+import Loader from "../../common/Loader/Loader";
+import SpeakerCard from "../SpeakerCard";
+import { TDetails } from "../SpeakerCard";
 import styles from './SidebarContent.module.scss';
 import "../../muiStyles.css"
 
 const SidebarContent = () => {
-    // const { search } = Icons;
+    const [data, setData] = useState(SpeakerDetails);
+    const [query, setQuery] = useState("");
+    const [loading, setLoading] = useState(false)
+    const [selectedData, setSelectedData] = useState<TDetails[]>([])
+
+    const handleChange = (id: number) => {
+        console.log(id,"id")
+        const findData = data?.find(item => item.id === id);
+      
+        if (findData) {
+          setSelectedData(prev => {
+            const isSelected = prev.some(item => item.id === id);
+            
+            if (isSelected) {
+              return prev.filter(item => item.id !== id);
+            } else {
+              return [...prev, findData];
+            }
+          });
+        }
+      };
+      
+
+    console.log(selectedData,"sele")
+    useEffect(() => {
+        setLoading(true); // Set loading to true immediately when the effect is triggered
+      
+        const debounce = setTimeout(() => {
+          const searchTable = (name: string) => {
+            try {
+              if (name) {
+                const filteredData = data?.filter((item) =>
+                  item?.name.toLowerCase().includes(name.toLowerCase())
+                );
+                setData(filteredData);
+              } else {
+                // Reset to the original data if no query
+                setData(SpeakerDetails);
+              }
+            } finally {
+              setLoading(false); // Ensure loading is set to false even if there's an error
+            }
+          };
+      
+          searchTable(query);
+        }, 1000);
+      
+        return () => {
+          clearTimeout(debounce);
+          setLoading(false); // Ensure loading is set to false when the effect is cleaned up
+        };
+      }, [query]);
+      
     return (
         <Box sx={{width: 600}}>
             <div>
                 {/* header */}
-                <div >
+                <div className={styles.topHeader}>
                     <div className={styles.headerContainer}>
                         <Typography variant="subtitle1" gutterBottom sx={{fontWeight:"600"}}>Add Speaker</Typography>
                         <IconButton aria-label="delete">
@@ -26,45 +83,29 @@ const SidebarContent = () => {
 
                     <div className={styles.searchContainer}>
                         <img src={searchImg} alt="Search icon" className={styles.searchImage} />
-                        <IconInput position="start"/>
+                        <IconInput position="start" onChange={(e) => setQuery(e.target.value)}/>
                     </div>
                 </div>
 
-                {/* search bar */}
+                {/* body */}
                 <div className={styles.sidebarBody}>
-                    
-
-                    <div style={{display:"flex", justifyContent:"space-between"}}>
-                        <div className={styles.speakerInfoContainer} >
-                            <div className={styles.speakerInfo}>
-                                <div className={styles.avatarImg}>
-                                    <img src={avatar} alt="Avatar" />
-                                </div>
-                                <div className={styles.speakerDetails}>
-                                    <Typography variant="subtitle2" >Example name</Typography>
-                                    <div style={{display:"flex", gap:"2px", alignItems:"center"}}>
-                                        <Typography variant="body2" sx={{color:"var(--grey-textColor)"}}  >President of india</Typography>
-                                        <Divider orientation="vertical"  variant="middle" flexItem  sx={{height:"1rem"}}/>
-                                        <Typography variant="body2" sx={{color:"var(--grey-textColor)"}} >XYZ organisation</Typography>
-                                    </div>
-                                    <div style={{display:"flex", gap:"0.2rem", alignItems:"center", marginBottom:"0.5rem"}}>
-                                        <img src={editImg} alt="edit icon" width={15}/>
-                                        <Typography sx={{color: "var(--brand-color)"}} variant="subtitle2" >Edit speaker</Typography>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <Checkbox
-                                size="small"
-                                    checked={true}
-                                    // onChange={handleChange}
-                                    inputProps={{ 'aria-label': 'controlled' }}
-                                />
-                            </div>
-                        </div>
+                    <div>
+                        {loading ? <Loader/> : 
+                        data?.map((details) => (
+                           <SpeakerCard details={details} handleChange={handleChange} selectedData={selectedData}/>
+                        ))
+                    }
                     </div>
                 </div>
-                
+
+                {/* footer */}
+                <div className={styles.footer}>
+                    <div style={{display:"flex", flexDirection:"row", gap:"0.5rem"}}>
+                        <StyledButton backgroundColor="var(--button-disableColor)" hoverBackgroundColor="var(--brand-color)" hoverTextColor="var(--light-textColor)" textColor="var(--grey-textColor)" size="medium">Add</StyledButton>
+                        <StyledButton backgroundColor="var(--button-brandLightColor)" hoverBackgroundColor="" hoverTextColor="var(--brand-color)" textColor="var(--brand-color)" size="medium">Cancel</StyledButton>
+                   </div>
+                        <StyledButton backgroundColor="" hoverBackgroundColor="" hoverTextColor="" textColor="var(--brand-color)">Create a Speaker</StyledButton>
+                   </div>
                 <div>
 
                 </div>
