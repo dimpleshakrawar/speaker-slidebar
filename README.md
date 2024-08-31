@@ -1,50 +1,43 @@
-# React + TypeScript + Vite
+This project implements an "Add Speaker" feature with the following key functionalities:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features -
+-Sidebar with Add Speaker Button:
 
-Currently, two official plugins are available:
+-When the "Add Speaker" button is clicked, a sidebar slides in from the right.
+-The sidebar contains a list of speaker options.
+-A close button is available in the sidebar to close it.
+-Fixed Header and Search Bar:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-The header and search bar remain fixed at the top of the sidebar.
+-The speaker list is scrollable, and the scroll area adjusts based on the height of the device.
+-Speaker List and Search:
 
-## Expanding the ESLint configuration
+-Users can search for speakers from the list.
+-All speakers are stored in a static array.
+-Speaker Selection:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-Users can select speakers from the list.
+-Selected speakers are highlighted.
+-Multiple speakers can be selected at once.
+-The save button is enabled when one or more speakers are selected.
+-How to Run the Project
 
-- Configure the top-level `parserOptions` property like this:
+Installation:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+-Clone the repository.
+-Run npm install to install dependencies.
+-Running the Project:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+-Run npm run dev to start the development server.
+-Accessing the Feature:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+-Open the application in your browser.
+-Click the "Add Speaker" button to open the sidebar.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Technical Details -
+Technology Stack:
+
+-Vite-React 
+-Material-UI (MUI) for styling
+-TypeScript
+-CSS modules 
